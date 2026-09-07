@@ -1,3 +1,5 @@
+import { useState } from 'react'
+
 function Welcome(props) {
   return (
     <>
@@ -20,25 +22,31 @@ function Counter() {
 }
 
 function Product(props) {
-  const [qty, setQty] = useState(0)
   const increment = () =>{
-        setQty(qty+1);
+        props.setQty(props.qty+1);
     };
      const decrement = () =>{
-      if (qty >0)
-        setQty(qty-1);
+      if (props.qty >0)
+        props.setQty(props.qty-1);
     };
   return (
 
     <>
     name: {props.name} <br/>
-    qty: {qty}
+    qty: {props.qty}
 
     <button onClick={increment} >Increment</button>
     <button onClick={decrement}>Decrement</button>
     
     </>
   )
+}
+
+function Total(props){
+  return (
+
+    <>Total: {props.potatoQty + props.chilliQty} </>
+  );
 }
 
 function Names(props) {
@@ -48,3 +56,4 @@ function Names(props) {
     </>
   )
 }
+export  {Product, Total};
